@@ -90,6 +90,6 @@ class flight_path_info():
         print(f'The destination is {path_instance.dest_airport_name}. The coords are at {path_instance.dest_aiport_coords}; in {path_instance.dest_airport_country}, {path_instance.dest_city}')
         print("\n")
         if path_instance.state_stamp != None:
-            print(f"The plane is currently on lattitude {path_instance.current_latitude} and longitude {path_instance.current_longitude}. It is currently {path_instance.geo_altitude} metres high, travelling at a velocity of {path_instance.velocity} mph.")
+            print(f"The plane is currently on lattitude {path_instance.current_latitude} and longitude {path_instance.current_longitude}. It is currently {path_instance.geo_altitude} metres high, travelling at a velocity of {path_instance.velocity} metres a second.")
         else:
             print(None)

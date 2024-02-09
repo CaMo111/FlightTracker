@@ -1,9 +1,7 @@
 import opensky_api
 import requests
 import json
-
-
-
+ 
 '''
 Going to use REST API client since we are not authenticated through OPENSKY
 as a user lulw
@@ -61,6 +59,6 @@ def get_complex_aircraft_info(input_code):
         }
     else:
         # If there are no states returned, return None
-        raise ValueError
+        return None
 # Call the function with the icao24 identifier "icao24"
 
