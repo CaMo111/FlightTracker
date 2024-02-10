@@ -14,7 +14,7 @@ import sys
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-import complex_state_method
+import complex_state_method_refined
 from PyQt5.QtWidgets import QApplication, QSizePolicy, QWidget, QMainWindow, QMenu, QVBoxLayout, QSpinBox
 
 
@@ -57,16 +57,9 @@ class flight_path_info():
         self.ID = flightcode
         self.flight_info = fr.get_flight(self.ID)
         self.icao24 = icao24
-        self.state_stamp = complex_state_method.get_complex_aircraft_info(self.icao24)
 
-        if self.state_stamp != None:
-            self.callsign = self.state_stamp['Callsign']
-            self.current_latitude = self.state_stamp['Latitude']
-            self.current_longitude = self.state_stamp['Longitude']
-            self.geo_altitude = self.state_stamp['Geo Altitude']
-            self.ongroundbool = self.state_stamp['On Ground']
-            self.velocity = self.state_stamp['Velocity']
-            self.bearing = self.state_stamp['True Track']
+        self.state_stamp = complex_state_method_refined(self.icao24)
+        self.state_stamp.get_aircraft_details()
 
     def run_down_info(self):
         input_id  = self.ID
