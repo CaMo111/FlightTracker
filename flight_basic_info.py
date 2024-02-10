@@ -58,7 +58,7 @@ class flight_path_info():
         self.flight_info = fr.get_flight(self.ID)
         self.icao24 = icao24
 
-        self.state_stamp = complex_state_method_refined(self.icao24)
+        self.state_stamp = complex_state_method_refined.complex_state_vector_method(self.icao24)
         self.state_stamp.get_aircraft_details()
 
     def run_down_info(self):
@@ -83,6 +83,11 @@ class flight_path_info():
         print(f'The destination is {path_instance.dest_airport_name}. The coords are at {path_instance.dest_aiport_coords}; in {path_instance.dest_airport_country}, {path_instance.dest_city}')
         print("\n")
         if path_instance.state_stamp != None:
-            print(f"The plane is currently on lattitude {path_instance.current_latitude} and longitude {path_instance.current_longitude}. It is currently {path_instance.geo_altitude} metres high, travelling at a velocity of {path_instance.velocity} metres a second.")
+            print(f"The plane is currently on lattitude {path_instance.state_stamp.latitude} and longitude {path_instance.state_stamp.longitude}. It is currently {path_instance.state_stamp.altitude} metres high, travelling at a velocity of {path_instance.state_stamp.velocity} metres a second.")
         else:
             print(None)
+
+idinp = input(str("enter ID "))
+icao24inp = input(str("enter icao24: "))
+flight = flight_path_info(idinp, icao24inp)
+flight.run_down_info()

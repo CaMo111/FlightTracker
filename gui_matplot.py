@@ -33,7 +33,9 @@ import flight_basic_info
 
 idinp = input(str("enter ID "))
 icao24inp = input(str("enter icao24: "))
-flight_basic_info.flight_path_info(idinp, icao24inp)
+flight = flight_basic_info.flight_path_info(idinp, icao24inp)
+flight.run_down_info()
+
 
 #This gui_matplot file is for plotting 
 
