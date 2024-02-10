@@ -1,6 +1,7 @@
-import opensky_api
+#import opensky_api
 import requests
 import json
+from pyopensky.rest import REST
  
 '''
 Going to use REST API client since we are not authenticated through OPENSKY
@@ -23,16 +24,24 @@ Distance Matrix API - Google --> Get the travel distance and time for a
  This can be used to calculate how far from and to, as well as the time it would 
  take to get between the state vector and the destination or departure airports.
 
+  Live ADS-B Data API
+
 '''
 
 def get_complex_aircraft_info(input_code):
     # Create an instance of the OpenSkyApi class with the provided username and password
     # right now i dont have an account so i cant even collect the state snap shot
     # kms
-    api = opensky_api.OpenSkyApi()
+    #api = opensky_api.OpenSkyApi()
+    #api = opensky.OpenSkyAPi()
     input_code = input_code.lower()
     # Get the states for the aircraft with the specified icao24 identifier
-    states = api.get_states(icao24=input_code)
+    #states = api.get_states(icao24=input_code)
+    rest = REST()
+    states = rest.tracks(icao24=input_code)
+    states = states.to_dict()
+    #states = pyopensky.
+    print(states)
 
     # Check if there are any states returned
     if states.states:
@@ -61,4 +70,6 @@ def get_complex_aircraft_info(input_code):
         # If there are no states returned, return None
         return None
 # Call the function with the icao24 identifier "icao24"
+    
+get_complex_aircraft_info('7C4926')
 
