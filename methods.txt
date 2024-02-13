@@ -1,3 +1,5 @@
 gui_matplot --> responsible for mapping and graphical user interface
 flight_basic_info --> responsible for plotting plane
 complex_method --> gives the single state of plane
+
+https://opensky-network.org/api/states/all?icao24

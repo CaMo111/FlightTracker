@@ -62,32 +62,32 @@ class flight_path_info():
         self.state_stamp.get_aircraft_details()
 
     def run_down_info(self):
-        input_id  = self.ID
-        icao24_input = self.icao24
-
-        path_instance = flight_path_info(input_id, icao24_input)
         
-        path_instance.origin_airport_name = path_instance.flight_info['result']['response']['data'][0]['airport']['origin']['name']
-        path_instance.origin_airport_coords = (path_instance.flight_info['result']['response']['data'][0]['airport']['origin']['position']['latitude'], path_instance.flight_info['result']['response']['data'][0]['airport']['origin']['position']['longitude'])
-        path_instance.origin_airport_country = path_instance.flight_info['result']['response']['data'][0]['airport']['origin']['position']['country']['name']
-        path_instance.og_city = path_instance.flight_info['result']['response']['data'][0]['airport']['origin']['position']['region']['city']
+        self.origin_airport_name = self.flight_info['result']['response']['data'][0]['airport']['origin']['name']
+        self.origin_airport_coords = (self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['latitude'], self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['longitude'])
+        self.origin_airport_country = self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['country']['name']
+        self.og_city = self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['region']['city']
 
-        path_instance.dest_airport_name = path_instance.flight_info['result']['response']['data'][0]['airport']['destination']['name']
-        path_instance.dest_aiport_coords = (path_instance.flight_info['result']['response']['data'][0]['airport']['destination']['position']['latitude'], path_instance.flight_info['result']['response']['data'][0]['airport']['destination']['position']['longitude'])
-        path_instance.dest_airport_country = path_instance.flight_info['result']['response']['data'][0]['airport']['destination']['position']['country']['name']
-        path_instance.dest_city = path_instance.flight_info['result']['response']['data'][0]['airport']['destination']['position']['region']['city']
+        self.dest_airport_name = self.flight_info['result']['response']['data'][0]['airport']['destination']['name']
+        self.dest_aiport_coords = (self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['latitude'], self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['longitude'])
+        self.dest_airport_country = self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['country']['name']
+        self.dest_city = self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['region']['city']
 
-        #print(path_instance.flight_info['result']['response']['data'][0]['time'], "\n")
-        print(f'Leaving from {path_instance.origin_airport_name}, at {path_instance.origin_airport_coords} from {path_instance.origin_airport_country}, {path_instance.og_city}.')
+        '''
+        print(f'Leaving from {self.origin_airport_name}, at {self.origin_airport_coords} from {self.origin_airport_country}, {self.og_city}.')
         print("\n")
-        print(f'The destination is {path_instance.dest_airport_name}. The coords are at {path_instance.dest_aiport_coords}; in {path_instance.dest_airport_country}, {path_instance.dest_city}')
+        print(f'The destination is {self.dest_airport_name}. The coords are at {self.dest_aiport_coords}; in {self.dest_airport_country}, {self.dest_city}')
         print("\n")
-        if path_instance.state_stamp != None:
-            print(f"The plane is currently on lattitude {path_instance.state_stamp.latitude} and longitude {path_instance.state_stamp.longitude}. It is currently {path_instance.state_stamp.altitude} metres high, travelling at a velocity of {path_instance.state_stamp.velocity} metres a second.")
+        if self.state_stamp != None:
+            print(f"The plane is currently on lattitude {self.state_stamp.latitude} and longitude {self.state_stamp.longitude}. It is currently {self.state_stamp.altitude} metres high, travelling at a velocity of {self.state_stamp.velocity} metres a second.")
         else:
             print(None)
+        '''
+        return None
 
+'''
 idinp = input(str("enter ID "))
 icao24inp = input(str("enter icao24: "))
 flight = flight_path_info(idinp, icao24inp)
 flight.run_down_info()
+'''
