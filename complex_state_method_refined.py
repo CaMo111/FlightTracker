@@ -33,6 +33,7 @@ class complex_state_vector_method():
                 self.squawk = aircraft[14]
                 self.spi = aircraft[15]
                 self.position_source = aircraft[16]
+                self.velocity_kmh = (self.velocity * 3.6)
 
                 return {
                 'ICAO24': self.icao,
@@ -49,6 +50,8 @@ class complex_state_vector_method():
                 # Boolean indicating whether the aircraft is on the ground or not
                 'Velocity': self.velocity,
                 # Velocity of the aircraft in meters per second
+                'Velocity_kmh': self.velocity_kmh,
+                # Velocity of aircraft in kmh
                 'True Track': self.true_track,
                 # Heading of the aircraft in degrees from North
                 'Origin': self.origin_country,
