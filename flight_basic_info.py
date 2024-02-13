@@ -21,6 +21,20 @@ from PyQt5.QtWidgets import QApplication, QSizePolicy, QWidget, QMainWindow, QMe
 
 fr = flightradar24.Api()
 
+'''
+distances ✓
+time ✓
+    --> what time does the flight board?
+    --> what time does the flight arrive
+    --> 
+plane information ✓
+airports ✓
+baggage delays
+terminal + gate info
+pilot info
+map plotting (GUI)
+'''
+
 #OpenSky REST API could be of use
 #time for planes is in UNIX TIME STAMP
 
@@ -61,7 +75,7 @@ class flight_path_info():
         self.state_stamp = complex_state_method_refined.complex_state_vector_method(self.icao24)
         self.state_stamp.get_aircraft_details()
 
-    def run_down_info(self):
+    def run_down_info(self, *args, **kwargs):
         
         self.origin_airport_name = self.flight_info['result']['response']['data'][0]['airport']['origin']['name']
         self.origin_airport_coords = (self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['latitude'], self.flight_info['result']['response']['data'][0]['airport']['origin']['position']['longitude'])

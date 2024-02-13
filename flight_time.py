@@ -16,7 +16,10 @@ from haversine import haversine, Unit
  then divide by the averagespeed of commercial flights,
  which is ~550mph. then, you get your flight time.
 
- origin and dest must use place ID since coordinates will snap to closest road.
+ plan changed --> google api for some reason didn't work with the place ID requests so instead using
+ haversine module to collect distance and time manually. Its fine though it does the same thing
+ and now i've generated place ID which i guess is good anyway?
+
  
 '''
 
@@ -47,7 +50,7 @@ class traversal_time():
         og_place_req_output = og_place_req.json()
         og_place_id = og_place_req_output['results'][0]['place_id']
 
-        place_id_dictionary = {
+        self.place_id_dictionary = {
             'state_vector_placeid' : state_vector_place_id,
 
             'destination_placeid' : dest_place_id,
@@ -55,24 +58,24 @@ class traversal_time():
             'origin_placeid' : og_place_id
         }
 
-        print(place_id_dictionary)
 
-        coordinate_dictionary = {
+        self.coordinate_dictionary = {
             'state_vector_coords' : (self.path_instance.state_stamp.latitude, self.path_instance.state_stamp.longitude),
             'dest_coords' : self.path_instance.dest_aiport_coords,
             'og_coords' : self.path_instance.origin_airport_coords
         }
 
-        state_vector_to_dest_distance = haversine(coordinate_dictionary['state_vector_coords'], self.path_instance.dest_aiport_coords)
+        state_vector_to_dest_distance = haversine(self.coordinate_dictionary['state_vector_coords'], self.path_instance.dest_aiport_coords)
         og_to_dest_distance = haversine(self.path_instance.origin_airport_coords, self.path_instance.dest_aiport_coords)
-        og_to_state_vector_distance = haversine(self.path_instance.origin_airport_coords, coordinate_dictionary['state_vector_coords'])
+        og_to_state_vector_distance = haversine(self.path_instance.origin_airport_coords, self.coordinate_dictionary['state_vector_coords'])
 
         print(state_vector_to_dest_distance, og_to_dest_distance, og_to_state_vector_distance)
 
-        time_travelled = (og_to_state_vector_distance / self.path_instance.state_stamp.velocity_kmh)
-        total_travel_time = (og_to_dest_distance / 900)
-        time_remaining = (state_vector_to_dest_distance / self.path_instance.state_stamp.velocity_kmh)
-        print(time_travelled, total_travel_time, time_remaining)
+        self.time_travelled = (og_to_state_vector_distance / self.path_instance.state_stamp.velocity_kmh)
+        self.total_travel_time = (og_to_dest_distance / 900)
+        self.time_remaining = (state_vector_to_dest_distance / self.path_instance.state_stamp.velocity_kmh)
+
+        print(self.time_remaining)
 
 idinp = input(str("enter ID "))
 icao24inp = input(str("enter icao24: "))
