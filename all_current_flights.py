@@ -14,6 +14,8 @@ def generate_all_flights_vectors():
         if lsts[8] == False:
             if lsts[6] != None and lsts[5] != None:
                 res.append(lsts[5:7])
+                res.append(lsts[0])
 
-    #these are all long, lat
+    #these are all long, lat, iacocode
+    #print(res)
     return res

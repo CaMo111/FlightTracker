@@ -27,7 +27,8 @@ def index():
     for location_info in twod_array:
         lat = location_info[1]
         lon = location_info[0]
-        folium.Marker([lat, lon], popup="Flight").add_to(map)
+        iaco_code = location_info[2]
+        folium.Marker([lat, lon], popup=f"IACO: {iaco_code}").add_to(map)
 
     return map._repr_html_()
 
