@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+import folium
+import all_current_flights
 '''
 app = Flask(__name__)
 
@@ -17,7 +19,17 @@ app = create_app()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    map = folium.Map(location=[0,0], zoom_start=3
+                     )
+    
+    twod_array = all_current_flights.generate_all_flights_vectors()
+
+    for location_info in twod_array:
+        lat = location_info[1]
+        lon = location_info[0]
+        folium.Marker([lat, lon], popup="Flight").add_to(map)
+
+    return map._repr_html_()
 
 if __name__ == "__main__":
     app.run()

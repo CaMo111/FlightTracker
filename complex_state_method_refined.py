@@ -11,6 +11,7 @@ class complex_state_vector_method():
         try:
             response = requests.get(url)
             data = response.json()
+            #print(data)
 
             if data["states"]:
                 aircraft = data["states"][0]
@@ -78,3 +79,8 @@ class complex_state_vector_method():
                 print("No information available for the provided ICAO 24-bit address.")
         except requests.exceptions.RequestException as e:
             print(f"Error: {e}")
+
+
+icao24inp = input(str("enter icao24: "))
+flight = complex_state_vector_method(icao24inp)
+flight.get_aircraft_details()
