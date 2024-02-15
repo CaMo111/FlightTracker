@@ -20,7 +20,7 @@ from haversine import haversine, Unit
  haversine module to collect distance and time manually. Its fine though it does the same thing
  and now i've generated place ID which i guess is good anyway?
 
- 
+ https://opensky-network.org/api/states/all?icao24
 '''
 
 class traversal_time():
@@ -82,3 +82,4 @@ icao24inp = input(str("enter icao24: "))
 flight = flight_path_info(idinp, icao24inp)
 flight_times = traversal_time(flight)
 flight_times.calculate_time()
+flight.print_flight_rundown_info()

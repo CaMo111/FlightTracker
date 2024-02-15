@@ -87,17 +87,16 @@ class flight_path_info():
         self.dest_airport_country = self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['country']['name']
         self.dest_city = self.flight_info['result']['response']['data'][0]['airport']['destination']['position']['region']['city']
 
-        '''
+    def print_flight_rundown_info(self):
+
         print(f'Leaving from {self.origin_airport_name}, at {self.origin_airport_coords} from {self.origin_airport_country}, {self.og_city}.')
         print("\n")
         print(f'The destination is {self.dest_airport_name}. The coords are at {self.dest_aiport_coords}; in {self.dest_airport_country}, {self.dest_city}')
         print("\n")
-        if self.state_stamp != None:
+        try:
             print(f"The plane is currently on lattitude {self.state_stamp.latitude} and longitude {self.state_stamp.longitude}. It is currently {self.state_stamp.altitude} metres high, travelling at a velocity of {self.state_stamp.velocity} metres a second.")
-        else:
-            print(None)
-        '''
-        return None
+        except:
+            print("iaco func fucked up")
 
 '''
 idinp = input(str("enter ID "))
