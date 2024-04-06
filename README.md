@@ -7,6 +7,10 @@ Sifted Data from IACO24:
 ![Sifted Data from IACO24](https://github.com/CaMo111/FlightTracker/assets/109951019/977a1f1c-27b2-4662-a48f-791c9cc20f14)
 
 
+<img width="1219" alt="flighttracker3" src="https://github.com/CaMo111/FlightTracker/assets/109951019/18f7f8d8-289c-427c-b74a-840f009848fa">
+
+
+
 
 
 Uses vector spaces and publicly sourced information to calculate distances, time and speed, as well as plotting airplanes on their path.
