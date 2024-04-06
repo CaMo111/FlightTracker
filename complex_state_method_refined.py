@@ -36,6 +36,8 @@ class complex_state_vector_method():
                 self.position_source = aircraft[16]
                 self.velocity_kmh = (self.velocity * 3.6)
 
+                print(f" \n The plane is currently on lattitude {self.latitude} and longitude {self.longitude}. \nIt is currently {self.altitude} metres high, travelling at a velocity of {self.velocity} metres a second. \n \n Complex State Vector Information:")
+
                 return {
                 'ICAO24': self.icao,
                 # Unique identifier for the aircraft
@@ -83,4 +85,4 @@ class complex_state_vector_method():
 
 icao24inp = input(str("enter icao24: "))
 flight = complex_state_vector_method(icao24inp)
-flight.get_aircraft_details()
+print(flight.get_aircraft_details())

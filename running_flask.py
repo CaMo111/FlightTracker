@@ -25,6 +25,7 @@ def index():
     twod_array = all_current_flights.generate_all_flights_vectors()
 
     for location_info in twod_array:
+        print(location_info)
         lat = location_info[1]
         lon = location_info[0]
         iaco_code = location_info[2]

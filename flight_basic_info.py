@@ -88,9 +88,8 @@ class flight_path_info():
         except:
             print("iaco func fucked up")
 
-'''
+
 idinp = input(str("enter ID "))
 icao24inp = input(str("enter icao24: "))
 flight = flight_path_info(idinp, icao24inp)
 flight.run_down_info()
-'''
