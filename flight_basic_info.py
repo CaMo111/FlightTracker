@@ -6,18 +6,8 @@ import pandas as pd
 from typing import Tuple
 import math
 import geopy.distance
-from mpl_toolkits.basemap import Basemap 
-import matplotlib.pyplot as plt
-import numpy as np
-from itertools import chain
-import sys
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
 
 import complex_state_method_refined
-from PyQt5.QtWidgets import QApplication, QSizePolicy, QWidget, QMainWindow, QMenu, QVBoxLayout, QSpinBox
-
-
 
 fr = flightradar24.Api()
 
